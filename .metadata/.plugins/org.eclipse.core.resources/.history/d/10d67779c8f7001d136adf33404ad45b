@@ -1,0 +1,50 @@
+package klu;
+
+import java.awt.datatransfer.SystemFlavorMap;
+import java.util.Scanner;
+
+public class klup {
+	static boolean aktif = true;
+	static int hakSayisi = 3;
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		if(aktif) {
+			if(hakSayisi>0)
+			{
+				while(true)
+				{
+					System.out.println("Kullanici Adiniz: ");
+					String usernameString = scanner.nextLine();
+					
+					System.out.println("Sifreniz: ");
+					String password = scanner.nextLine();
+					
+					boolean sonuc = login(username, password);
+					if(sonuc ) {
+						System.out.println("Uygulamaya Basarili Olarak Giris Yaptiniz");
+					}else {
+						continue;
+					}
+				}
+			}else {
+				System.out.println("Hak Sayiniz Dolmustur. Hesabiniz Bloke Oldu");
+			}
+		}else {
+			System.out.println("Hesabiniz aktif degildir. Yoneticiniz iile iletisime geciniz");
+		}
+	}
+	public static boolean login(String username, String password)
+	{
+		if(username.equals("enes") && password.equals("123"))
+		{
+			return true;
+		}else {
+			hakSayisi--;
+			if(hakSayisi==0)
+			{
+				aktif=false
+			}
+			return false
+		}
+	}
+}
